@@ -1,0 +1,14 @@
+.header{
+  background-color: lightblue;
+  padding-top: 15px;
+  overflow: auto;
+}
+
+.divPad{
+  margin-left: 20px;
+}
+
+.divUser{
+  float: right;
+  padding-right: 10px;
+}

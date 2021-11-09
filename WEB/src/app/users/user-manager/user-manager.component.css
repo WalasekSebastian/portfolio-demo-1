@@ -1,0 +1,27 @@
+.divPad{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 100%;
+}
+
+.but{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 30%;
+  position: relative;
+  float: right;
+  right: 10px;
+}
+
+td, th {
+  width: 20%;
+}

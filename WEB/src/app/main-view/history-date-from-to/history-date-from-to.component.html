@@ -1,0 +1,50 @@
+<div class="row justify-content-center divPad">
+  <div class="sm-12 divPad">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Wybierz datę od" ng-model="date" (dateChange)="dateFrom($event.value)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerTwo" placeholder="Wybierz datę do" ng-model="date" (dateChange)="dateTo($event.value)">
+      <mat-datepicker-toggle matSuffix [for]="pickerTwo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTwo></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="showHistory()">Pokaż historię</button>
+  </div>
+</div>
+
+<mat-card>
+  <mat-card-title>Historia dni</mat-card-title>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="data">
+      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+      <mat-cell *matCellDef="let historia"> {{historia.data | date:'dd-MM-yyyy'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sumaM3">
+      <mat-header-cell *matHeaderCellDef> Suma m3 całkowita </mat-header-cell>
+      <mat-cell *matCellDef="let historia"> {{historia.sumaM3 | number:'1.1-4'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sumaM3Trak">
+      <mat-header-cell *matHeaderCellDef> Suma m3 Trak </mat-header-cell>
+      <mat-cell *matCellDef="let historia"> {{historia.sumaM3Trak | number:'1.1-4'}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sumaKlod">
+      <mat-header-cell *matHeaderCellDef> Suma kłód całkowita </mat-header-cell>
+      <mat-cell *matCellDef="let historia"> {{historia.sumaKlod}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sumaKlodTrak">
+        <mat-header-cell *matHeaderCellDef> Suma kłód Trak </mat-header-cell>
+        <mat-cell *matCellDef="let historia"> {{historia.sumaKlodTrak}} </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>

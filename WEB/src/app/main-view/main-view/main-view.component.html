@@ -1,0 +1,86 @@
+
+  <mat-sidenav-container>
+    <mat-sidenav #drawer class="sidebar" mode="over"
+    [fixedInViewport]="true">
+      <ul>
+        <li [routerLink]="['dashboard']" [routerLinkActive]="'active'" (click)="drawer.toggle()">
+          <div class="row">
+            <div class="col-sm-2">
+                <mat-icon>home</mat-icon>
+            </div>
+            <div class="col">
+                DASHBOARD
+            </div>
+          </div>
+        </li>
+
+        <li [routerLink]="['history']" [routerLinkActive]="'active'" (click)="drawer.toggle()">
+            <div class="row">
+                <div class="col-sm-2">
+                    <mat-icon class="font-size: 36px;">restore</mat-icon>
+                </div>
+                <div class="col">
+                  historia kłód
+                </div>
+              </div>
+        </li>
+
+        <li [routerLink]="['historyDate']" [routerLinkActive]="'active'" (click)="drawer.toggle()">
+          <div class="row">
+              <div class="col-sm-2">
+                  <mat-icon class="font-size: 36px;">settings_backup_restore</mat-icon>
+              </div>
+              <div class="col">
+                historia z dnia
+              </div>
+            </div>
+        </li>
+
+        <li [routerLink]="['historyDateFromTo']" [routerLinkActive]="'active'" (click)="drawer.toggle()">
+          <div class="row">
+              <div class="col-sm-2">
+                  <mat-icon class="font-size: 36px;">replay</mat-icon>
+              </div>
+              <div class="col">
+                Historia zakres
+              </div>
+            </div>
+        </li>
+
+        <li *ngIf="isAdmin" [routerLink]="['userManager']" [routerLinkActive]="'active'" isActive= "'false'" (click)="drawer.toggle()">
+          <div class="row">
+              <div class="col-sm-2">
+                  <mat-icon class="font-size: 36px;">account_circle</mat-icon>
+              </div>
+              <div class="col">
+                Użytkownicy
+              </div>
+            </div>
+        </li>
+      </ul>
+    </mat-sidenav>
+
+<mat-sidenav-content>
+  <div class="row header">
+    <div class="col buttMenu">
+        <button matTooltip="MENU" type="button" mat-fab color="primary" (click)="drawer.toggle()"><mat-icon>reorder</mat-icon></button>
+    </div>
+    <div class="col">
+      <img src="../../../assets/logoMar.png" class="logo">
+    </div>
+    <div class="col">
+    </div>
+    <div class="col-2 buttUser">
+      <p class="divUser">
+      <button matTooltip="WYLOGUJ" mat-mini-fab color="warn" (click)="logout()"><mat-icon>power_settings_new</mat-icon></button>
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+    <div class="rox"><p>Wersja aplikacji: 1.3.3.101</p></div>
+  </div>
+
+</mat-sidenav-content>
+</mat-sidenav-container>

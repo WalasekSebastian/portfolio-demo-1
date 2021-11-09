@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-sm">
+    <div class="d-flex justify-content-center">
+        <mat-checkbox (change)="change()">Auto odświeżanie</mat-checkbox>
+    </div>
+  </div>
+</div>
+
+<div class="row divPad">
+  <div class="col-sm">
+    <app-chart-metersp-houer [date]="date" [refresh]="autoRefresh"></app-chart-metersp-houer>
+  </div>
+</div>
+
+<div class="row divPad">
+  <div class="col-sm-8">
+    <app-last-five-klodas [refresh]="autoRefresh"></app-last-five-klodas>
+  </div>
+  <div class="cols-sm-4">
+    <app-sum-meters [refresh]="autoRefresh"></app-sum-meters>
+    <p></p>
+    <app-sum-scan-klodas [refresh]="autoRefresh"></app-sum-scan-klodas>
+  </div>
+</div>
+
+<div class="row divPad">
+  <div class="col-sm-12">
+    <app-sum-klodas-box [refresh]="autoRefresh"></app-sum-klodas-box>
+  </div>
+</div>
+
+<div class="row divPad">
+  <div class="col-sm-12">
+    <app-last-setting-box [refresh]="autoRefresh"></app-last-setting-box>
+  </div>
+</div>
+
+

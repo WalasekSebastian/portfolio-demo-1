@@ -1,0 +1,52 @@
+<div class="divPad">
+  <mat-card>
+    <mat-card-title>Dodawanie nowego użytkownika</mat-card-title>
+    <form [formGroup]="userDetailsForm" novalidate (submit)="addUser($event)">
+
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Login" formControlName="login">
+          <mat-error *ngIf="userDetailsForm.get('login').hasError('required')">
+            Login jest <strong>wymagany</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Imie" formControlName="imie">
+          <mat-error *ngIf="userDetailsForm.get('imie').hasError('required')">
+            Imię jest <strong>wymagane</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Nazwisko" formControlName="nazwisko">
+          <mat-error *ngIf="userDetailsForm.get('nazwisko').hasError('required')">
+            Nazwisko jest <strong>wymagane</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="pad" formGroupName="password_group">
+        <mat-form-field>
+          <input matInput placeholder="Hasło" formControlName="password" type="password">
+          <mat-error *ngIf="userDetailsForm.get('password_group').get('password').hasError('required')">
+            Hasło jest wymagane
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Powtórz hasło" formControlName="repassword" [errorStateMatcher]="parentErrorStateMatcher" type="password">
+            <mat-error *ngFor="let validation of validation_messages.repassword">
+                <mat-error *ngIf="(userDetailsForm.get('password_group').get('repassword').hasError(validation.type)|| userDetailsForm.get('password_group').hasError(validation.type)) && (userDetailsForm.get('password_group').get('repassword').dirty || userDetailsForm.get('password_group').get('repassword').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+          </mat-form-field>
+      </div>
+
+      <div class="pad">
+          <mat-slide-toggle color="primary" [checked]="isAdmin" (change)="isAdminF()">Admin</mat-slide-toggle>
+          <mat-slide-toggle color="primary" [checked]="active" (change)="activeF()">Aktywny</mat-slide-toggle>
+      </div>
+      <div class="pad">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!userDetailsForm.valid"><mat-icon>done</mat-icon>Zapisz</button>
+      </div>
+    </form>
+
+  </mat-card>
+</div>

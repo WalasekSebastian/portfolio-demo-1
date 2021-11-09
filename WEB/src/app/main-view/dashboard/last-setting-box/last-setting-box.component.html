@@ -1,0 +1,38 @@
+<mat-card>
+  <mat-card-title>Ostatnie ustawienia boksów</mat-card-title>
+  <mat-card-subtitle>
+    <p><b>Data ostatnich zmian: {{lastUB?.data_ustawienia | date:'dd-MM-yyyy H:mm:ss'}}</b></p>
+    <div class="row">
+      <div class="col-sm">
+        <mat-card>
+        <p>Trak min: {{lastUB?.boks_5_D_min}}</p>
+        <p>Trak max: {{lastUB?.boks_5_D_max}}</p>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+        <p>Boks 4 min: {{lastUB?.boks_4_D_min}}</p>
+        <p>Boks 4 max: {{lastUB?.boks_4_D_max}}</p>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+        <p>Boks 3 min: {{lastUB?.boks_3_D_min}}</p>
+        <p>Boks 3 max: {{lastUB?.boks_3_D_max}}</p>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+        <p>Boks 2 min: {{lastUB?.boks_2_D_min}}</p>
+        <p>Boks 2 max: {{lastUB?.boks_2_D_max}}</p>
+        </mat-card>
+      </div>
+      <div class="col-sm">
+        <mat-card>
+        <p>Boks 1 min: {{lastUB?.boks_1_D_min}}</p>
+        <p>Boks 1 max: {{lastUB?.boks_1_D_max}}</p>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card-subtitle>
+</mat-card>

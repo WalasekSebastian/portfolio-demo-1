@@ -1,0 +1,66 @@
+<div class="row justify-content-center divPad">
+  <div class="sm-12 divPad">
+      <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Wybierz datę" ng-model="date" (dateChange)="dateInput($event.value)">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>
+<div class="row divPad">
+  <div class="col-6 divPad">
+    <mat-card>
+      <mat-card-title>Ilość m3</mat-card-title>
+      <p>{{iloscMetrow}}</p>
+    </mat-card>
+  </div>
+  <div class="col-6 divPad">
+    <mat-card>
+      <mat-card-title>Całkowita ilość kłód</mat-card-title>
+      <p>{{iloscKlod}}</p>
+    </mat-card>
+  </div>
+  <div class="col-12 divPad">
+    <mat-card>
+      <mat-card-title>Suma w boksach</mat-card-title>
+      <div class="row divPad">
+        <div class="col-sm">
+          <mat-card>
+            <mat-card-subtitle>TRAK</mat-card-subtitle>
+            <p>m3: {{_sumBox?.trak}}</p>
+            <p>ilosc: {{_sumIlosc?.trak}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm">
+          <mat-card>
+              <mat-card-subtitle>BOKS 4</mat-card-subtitle>
+              <p>m3: {{_sumBox?.boks4}}</p>
+              <p>ilosc: {{_sumIlosc?.boks4}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm">
+          <mat-card>
+              <mat-card-subtitle>Boks3</mat-card-subtitle>
+              <p>m3: {{_sumBox?.boks3}}</p>
+              <p>ilosc: {{_sumIlosc?.boks3}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm">
+          <mat-card>
+              <mat-card-subtitle>BOKS 2</mat-card-subtitle>
+              <p>m3: {{_sumBox?.boks2}}</p>
+              <p>ilosc: {{_sumIlosc?.boks2}}</p>
+          </mat-card>
+        </div>
+        <div class="col-sm">
+          <mat-card>
+              <mat-card-subtitle>BOKS 1</mat-card-subtitle>
+              <p>m3: {{_sumBox?.boks1}}</p>
+              <p>ilosc: {{_sumIlosc?.boks1}}</p>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card>
+    <app-chart-metersp-houer [date]="date"></app-chart-metersp-houer>
+  </div>
+</div>

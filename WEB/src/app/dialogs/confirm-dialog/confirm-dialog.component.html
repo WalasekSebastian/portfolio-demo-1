@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+
+<mat-dialog-content>
+  <p>{{data.text}}{{data.text2}}?</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="mat-raised-button" (click)="close()">ANULUJ</button>
+  <button class="mat-raised-button mat-primary" (click)="ok()">OK</button>
+</mat-dialog-actions>

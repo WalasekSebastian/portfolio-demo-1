@@ -1,0 +1,21 @@
+.isBad{
+  color: red;
+  text-transform: uppercase;
+}
+
+.card {
+  max-width: 250px;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cent{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

@@ -1,0 +1,17 @@
+<div class="divPad">
+<mat-card>
+  <mat-card-title>Wykres m3 na godzinę</mat-card-title>
+
+  <div class="xDiv">
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"></canvas>
+    </div>
+  </div>
+
+</mat-card>
+</div>

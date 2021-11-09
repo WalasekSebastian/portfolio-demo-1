@@ -1,0 +1,9 @@
+.divPad{
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.xDiv {
+  max-width: 800px;
+  max-height: 400px;
+}

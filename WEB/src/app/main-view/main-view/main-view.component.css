@@ -1,0 +1,85 @@
+.divClass{
+  background-color: rgb(240, 240, 240);
+  min-height: 100%;
+}
+
+.ro{
+  height: 100vh;
+  background-color: rgb(240, 240, 240);
+}
+
+.rox{
+  padding-top: 20px;
+  padding-left: 10px;
+}
+
+.header{
+  background-color: rgb(209, 229, 235);
+  max-height: 70px;
+}
+
+.buttMenu{
+  max-width: 60px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+.buttUser{
+  margin-top: 5px;
+}
+
+.divUser{
+  float: right;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
+
+.divPadas{
+  margin-left: 20px;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  background-color: lightgray;
+}
+
+li{
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  padding: 10px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+li:hover{
+  background: #165eac;
+  transition: linear 300ms;
+}
+
+li.active{
+  background: rgb(0, 129, 129);
+}
+
+.sidebar{
+  width: 13%;
+  background-color: lightgray;
+}
+
+.logo{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.container {
+  width: 500px;
+}
+
+@media only screen and (max-width: 700px) {
+  .sidebar{
+    width: 80%;
+    background-color: lightgray;
+  }
+}

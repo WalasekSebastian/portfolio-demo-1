@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>Ostatnie 5 kłód</mat-card-title>
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="boks_nr">
+      <mat-header-cell *matHeaderCellDef> Nr boksu </mat-header-cell>
+      <mat-cell *matCellDef="let kloda"> {{kloda.boks_nr}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="srednica_min_mm">
+      <mat-header-cell *matHeaderCellDef> Średnica min/max (mm) </mat-header-cell>
+      <mat-cell *matCellDef="let kloda"> {{kloda.srednica_min_mm}} / {{kloda.srednica_max_mm}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="objetosc_m3">
+      <mat-header-cell *matHeaderCellDef> Objetosc (m3) </mat-header-cell>
+      <mat-cell *matCellDef="let kloda"> {{kloda.objetosc_m3}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dlugosc_mm">
+      <mat-header-cell *matHeaderCellDef> Długość (mm) </mat-header-cell>
+      <mat-cell *matCellDef="let kloda"> {{kloda.dlugosc_mm}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="czas_pomiaru">
+        <mat-header-cell *matHeaderCellDef> Czas pomiaru </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.czas_pomiaru | date:'dd-MM-yyyy   H:mm:ss'}} </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-card>

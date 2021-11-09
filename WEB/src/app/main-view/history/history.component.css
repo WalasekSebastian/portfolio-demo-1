@@ -1,0 +1,27 @@
+.mat-header-cell.mat-sort-header-sorted {
+  color: black;
+}
+
+.divPad{
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.loading-shade {
+  position: unset;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emptySpace
+{
+  margin-left: 5px;
+}

@@ -1,0 +1,26 @@
+<div class="main-div">
+<mat-card class="card">
+  <form (submit)="loginUser($event)">
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Login" required>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput placeholder="Hasło" required type="password">
+      </mat-form-field>
+      <div *ngIf="isBad" class="isBad">
+        <p>Błędny login lub hasło !</p>
+      </div>
+        <div class="cent">
+            <button *ngIf="!isWorking" mat-raised-button color="primary" type="submit">Login</button>
+            <mat-spinner *ngIf="isWorking" [diameter]='30'></mat-spinner>
+        </div>
+
+      </div>
+  </form>
+</mat-card>
+  </div>
+
+

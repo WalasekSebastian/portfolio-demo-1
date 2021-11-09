@@ -1,0 +1,86 @@
+<div class="col-12 divPad">
+  <mat-card>
+    <mat-card-title>Eksport do CSV</mat-card-title>
+    <form [formGroup]="dateForm" novalidate (submit)="exportCsv()">
+
+      <mat-form-field>
+        <input matInput [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="dateTime1" placeholder="Data od" formControlName="dateFrom">
+        <mat-error *ngIf="dateForm.get('dateFrom').hasError('required')">
+          Data jest <strong>wymagana</strong>
+        </mat-error>
+        <owl-date-time [firstDayOfWeek]="'1'" #dt1 (afterPickerClosed)="dateFrom(dateTime1)"></owl-date-time>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input class="emptySpace" matInput [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" [(ngModel)]="dateTime2" placeholder="Data do" formControlName="dateTo">
+        <owl-date-time [firstDayOfWeek]="'1'" #dt2 (afterPickerClosed)="dateTo(dateTime2)"></owl-date-time>
+        <mat-error *ngIf="dateForm.get('dateTo').hasError('required')">
+          Data jest <strong>wymagana</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button class="emptySpace" mat-raised-button color="primary" type="submit" [disabled]="!dateForm.valid">Export CSV (wszystkie klody)</button>
+      <button class="emptySpace" mat-raised-button color="primary" type="button" [disabled]="!dateForm.valid" (click)="exportCsvPerDay()">Export CSV (historia na dzień)</button>
+
+    </form>
+  </mat-card>
+</div>
+
+<div class="col-12 divPad">
+  <div class="loading-shade" *ngIf="isLoadingResults || isOk">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-card *ngIf="isOk; else Bad" [hidden]="isLoadingResults">
+    <mat-card-title>Wszystkie kłody</mat-card-title>
+
+    <mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDisableClear matSortDirection="desc">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="boks_nr">
+        <mat-header-cell *matHeaderCellDef> Nr boksu </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.boks_nr}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="srednica_min_mm">
+        <mat-header-cell *matHeaderCellDef> Średnica min/max (mm) </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.srednica_min_mm}} / {{kloda.srednica_max_mm}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="objetosc_m3">
+        <mat-header-cell *matHeaderCellDef> Objetosc (m3) </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.objetosc_m3}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="dlugosc_mm">
+        <mat-header-cell *matHeaderCellDef> Długość (mm) </mat-header-cell>
+        <mat-cell *matCellDef="let kloda"> {{kloda.dlugosc_mm}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="czas_pomiaru">
+          <mat-header-cell *matHeaderCellDef> Czas pomiaru </mat-header-cell>
+          <mat-cell *matCellDef="let kloda"> {{kloda.czas_pomiaru | date:'dd-MM-yyyy   H:mm:ss'}} </mat-cell>
+        </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="resultLenght"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 25, 50, 100, 200]">
+    </mat-paginator>
+
+  </mat-card>
+
+  <ng-template #Bad>
+    <div>
+      <p>Błąd przy odczytu danych z serwera</p>
+    </div>
+  </ng-template>
+
+</div>
+
